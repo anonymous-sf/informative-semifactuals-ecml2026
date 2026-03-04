@@ -11,6 +11,8 @@ Semi-factual or *Even if* explanations explains how a predicted outcome *can rem
 
 For example in the above figure, consider Mark with the Credit Score of 550 who has applied for $20k loan and was accepted. The semi-factual explanation (SF) tells him that "Even if had applied for $65k he would still have been accepted". This is possible due to his credit score of 550. 
 
+The rightmost graph shows a decision space for Mark and his semi-factual explanation (SF), with a path between them based on two perturbation steps (Q' and Q'') in which the key-feature *loan amount* is systematically increased from 20k to 65K, without changing *credit-score which stays at 550*. The leftmost graphic shows the relative changes in the marginal contributions of these two features across these perturbed instances as they remain in the loan-accept class. As *loan amount* increases its marginal contribution to keeping instances in the loan-accept class decreases (see *purple* plot) and even though *credit-score's* value does not change, it marginal contribution increases (see *orange* plot) revealing a *seesaw pattern* between the two features.
+
 --------------
 
 ## Experiments
