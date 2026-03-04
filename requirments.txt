@@ -1,0 +1,9 @@
+shap
+pandas
+numpy
+scikit-learn
+tqdm
+pymannkendall
+copulas
+pymoo
+scipy
