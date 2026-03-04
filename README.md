@@ -17,7 +17,7 @@ The rightmost graph shows a decision space for Mark and his semi-factual explana
 
 ## Experiments
 
-Please ensure that you have all the requirements listed in ```requirements.text``` installed. To reproduce the results, go inside the method inside src: ensemble or isf and then run 
+Please ensure that you have all the requirements listed in ```requirements.text``` installed. To reproduce the results, go inside the method inside ```src/ensemble``` or ```src/isf``` and then run:
 
 ```
 python 'dataset_name'.py
