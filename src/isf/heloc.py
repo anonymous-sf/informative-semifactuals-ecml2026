@@ -22,20 +22,13 @@ def sf_loop(X, y, classifier, nbrs, trust_model, cat_idx, cat_embed, model_path,
     # create dictionary to hold results
     results = []
 
-    # randomly select 50 indices
-    random_indices = np.random.choice(
-        a=len(X),
-        size=30,
-        replace=False  # Ensures each index is unique
-    )
-
     # loop through the random indices
-    for id in tqdm(random_indices, total=len(random_indices)):
-        query = X[id]
+    for id, (x_item, y_item) in tqdm(enumerate(zip(X, y)), total=len(X)):
+        query = x_item
         # get the prediction of the test instance
         # label = classifier.predict(query.reshape(1, -1))[0]
         # using the actual label
-        label = y[id]
+        label = y_item
 
         # get final mdn for the test instance
         feat_idxs, feat_sfs, feat_sf_type, feat_sf_tau, feat_sf_support = get_informative_sf(query, classifier, label, min_vals, max_vals, cat_idx, cat_embed, copula, min_threshold, max_threshold, explainer, tau_threshold)
@@ -46,7 +39,7 @@ def sf_loop(X, y, classifier, nbrs, trust_model, cat_idx, cat_embed, model_path,
             sf = feat_sfs[idx]
             sf_type = feat_sf_type[idx]
             kendall_tau = feat_sf_tau[idx]
-            support_boundary_idx = feat_sf_support[idx]
+            hidden_feature = feat_sf_support[idx]
 
             if sf is not None:
                 # evaluation metrics
@@ -71,7 +64,7 @@ def sf_loop(X, y, classifier, nbrs, trust_model, cat_idx, cat_embed, model_path,
                 'sf': sf,
                 'sf_type': sf_type,
                 'kendall_tau': kendall_tau,
-                'support_boundary_idx': support_boundary_idx,
+                'hidden_feature': hidden_feature,
                 'sparsity': sparsity,
                 'sf_query': sf_query,
                 'ood': ood_dist,

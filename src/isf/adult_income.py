@@ -39,7 +39,7 @@ def sf_loop(X, y, classifier, nbrs, trust_model, cat_idx, cat_embed, model_path,
             sf = feat_sfs[idx]
             sf_type = feat_sf_type[idx]
             kendall_tau = feat_sf_tau[idx]
-            support_boundary_idx = feat_sf_support[idx]
+            hidden_feature = feat_sf_support[idx]
 
             if sf is not None:
                 # evaluation metrics
@@ -64,7 +64,7 @@ def sf_loop(X, y, classifier, nbrs, trust_model, cat_idx, cat_embed, model_path,
                 'sf': sf,
                 'sf_type': sf_type,
                 'kendall_tau': kendall_tau,
-                'support_boundary_idx': support_boundary_idx,
+                'hidden_feature': hidden_feature,
                 'sparsity': sparsity,
                 'sf_query': sf_query,
                 'ood': ood_dist,
